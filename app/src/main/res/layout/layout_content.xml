@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/lnButtons"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorGray"
+        android:orientation="horizontal">
+        <ToggleButton
+            android:id="@+id/btnCategory"
+            style="@style/toggleButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/custom_toggle_button"
+            android:textColor="@drawable/custome_toogle_button_text_color"
+            android:textOff="Mới nhất"
+            android:textOn="Mới nhất"
+
+            />
+        <ToggleButton
+            android:id="@+id/btnType"
+            style="@style/toggleButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/custom_toggle_button"
+            android:textColor="@drawable/custome_toogle_button_text_color"
+            android:textOff="Danh mục"
+            android:textOn="Danh mục" />
+        <ToggleButton
+            android:id="@+id/btnAddress"
+            style="@style/toggleButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/custom_toggle_button"
+            android:textColor="@drawable/custome_toogle_button_text_color"
+            android:textOff="TP.HCM"
+            android:textOn="TP.HCM"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/lnButtons"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <FrameLayout
+            android:id="@+id/frame_category"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+
+            >
+
+            <ListView
+                android:id="@+id/lvCategory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </ListView>
+
+            <Button
+                android:id="@+id/btn_cancel_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/colorWhite"
+                android:text="@string/btn_cancel" />
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/frame_type"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_name_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:drawableRight="@drawable/iconfoody"
+                    android:gravity="center_vertical"
+                    android:text="@string/name_list_type"
+                    android:textColor="@color/colorFoody" />
+
+                <ListView
+                    android:id="@+id/lvType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                </ListView>
+
+                <Button
+                    android:id="@+id/btn_cancel_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="@color/colorWhite"
+                    android:text="@string/btn_cancel" />
+            </LinearLayout>
+
+
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/frame_address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Something here"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorFoody"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.9" />
+
+                    <Button
+                        android:id="@+id/btn_change_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@color/colorWhite"
+                        android:drawableLeft="@drawable/ic_near_me_black_24dp"
+                        android:drawableTint="@color/colorGray"
+                        android:text="something here"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/lvAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"></ListView>
+
+                <Button
+                    android:id="@+id/btn_cancel_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="Hủy" />
+            </LinearLayout>
+
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_conent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/lnButtons"
+        android:orientation="vertical">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPagerSlider"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:visibility="gone">
+
+        </android.support.v4.view.ViewPager>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_list_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGray"></android.support.v7.widget.RecyclerView>
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/txt_nothing"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/colorFoody"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:text="@string/txt_nothing"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/frame_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@color/colorGray"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recycler_list_items"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:visibility="visible" />
+    </FrameLayout>
+</RelativeLayout>

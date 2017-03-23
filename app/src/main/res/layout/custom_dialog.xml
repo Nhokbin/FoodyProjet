@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/custom_dialog"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGrayTrans"
+    >
+    <View
+        android:id="@+id/frame_close"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </View>
+    <LinearLayout
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:background="@color/colorWhite"
+            android:id="@+id/iteCoupon"
+            android:paddingLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:drawablePadding="10dp"
+            android:layout_gravity="start"
+            android:drawableLeft="@drawable/iconfoody"
+            android:text="@string/it_Coupon"
+            />
+        <Button
+            android:background="@color/colorWhite"
+            android:id="@+id/itUpImage"
+            android:paddingLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:drawablePadding="10dp"
+            android:layout_gravity="start"
+            android:drawableLeft="@drawable/iconfoody"
+            android:text="@string/it_UpImage"
+            />
+        <Button
+            android:background="@color/colorWhite"
+            android:id="@+id/itCheckin"
+            android:paddingLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:drawablePadding="10dp"
+            android:layout_gravity="start"
+            android:drawableLeft="@drawable/iconfoody"
+            android:text="@string/it_checkin"
+            />
+        <Button
+            android:background="@color/colorWhite"
+            android:id="@+id/itCommet"
+            android:paddingLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:drawablePadding="10dp"
+            android:layout_gravity="start"
+            android:drawableLeft="@drawable/iconfoody"
+            android:text="@string/it_comment"
+            />
+        <Button
+            android:background="@color/colorWhite"
+            android:id="@+id/itAddAddress"
+            android:paddingLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:drawablePadding ="10dp"
+            android:layout_gravity="start"
+            android:drawableLeft="@drawable/iconfoody"
+            android:text="@string/it_addaddress"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Foody</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="it_Coupon">Scan coupon</string>
+    <string name="it_UpImage">Upload image</string>
+    <string name="it_checkin">Check-in</string>
+    <string name="it_comment">Comment</string>
+    <string name="it_addaddress">Add Address</string>
+    <string name="name_list_type">List type</string>
+    <string name="btn_purchase">Đặt mua hàng</string>
+    <string name="txt_nothing">Oops! Không có quán ăn </string>
+</resources>

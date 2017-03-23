@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/iteCoupon"
+        android:title="@string/it_Coupon"
+        android:icon="@drawable/ic_more_vert_white_24dp"
+
+        />
+    <item
+        android:id="@+id/itUpImage"
+        android:title="@string/it_UpImage"
+        android:icon="@drawable/ic_more_vert_white_24dp"
+
+        />
+    <item
+        android:id="@+id/itCheckin"
+        android:title="@string/it_checkin"
+        android:icon="@drawable/ic_more_vert_white_24dp"
+
+        />
+    <item
+        android:id="@+id/itCommet"
+        android:title="@string/it_comment"
+        android:icon="@drawable/ic_more_vert_white_24dp"
+
+        />
+    <item
+        android:id="@+id/itAddAddress"
+        android:title="@string/it_addaddress"
+        android:icon="@drawable/ic_more_vert_white_24dp"
+
+        />
+</menu>
