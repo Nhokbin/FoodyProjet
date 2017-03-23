@@ -1,16 +1,20 @@
 package dav.com.foody.Views.Home;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -23,6 +27,7 @@ import java.util.ArrayList;
 import dav.com.foody.Adapters.ViewPagerAdapter;
 import dav.com.foody.CustomView.DialogFooter;
 import dav.com.foody.R;
+import dav.com.foody.Views.Home.Fragments.FooterMenuFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     ViewPager viewPager;
     LinearLayout linearButtonsHome;
     DialogFooter dialogFooter;
+    FrameLayout mExtraLayout;
 
 
     public final static String DATABASE_NAME="Foody.sqlite";
@@ -47,6 +53,14 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         linearButtonsHome = (LinearLayout) findViewById(R.id.linearButtonsHome);
+        mExtraLayout = (FrameLayout) findViewById(R.id.extra_layout);
+        mExtraLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                mExtraLayout.setVisibility(View.GONE);
+                return true;
+            }
+        });
 
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -88,10 +102,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // Create new fragment and transaction
+        FooterMenuFragment newFragment = new FooterMenuFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
-        dialogFooter = new DialogFooter();
-        dialogFooter.setCancelable(false);
-        dialogFooter.show(getFragmentManager(),"");
+        transaction.replace(R.id.extra_layout, newFragment);
+        transaction.addToBackStack(null);
+
+        transaction.commit();
+
+        mExtraLayout.setVisibility(View.VISIBLE);
+
         return true;
     }
 
