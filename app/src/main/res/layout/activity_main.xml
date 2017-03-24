@@ -1,87 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-    <LinearLayout
-        android:layout_gravity="bottom"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:id="@+id/linearButtonsHome"
-        android:background="@color/colorAccent"
-        >
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            />
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            />
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            />
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            />
-        <ImageButton
-            android:src="@mipmap/ic_launcher"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            />
-    </LinearLayout>
+        android:layout_height="match_parent">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/appbar"
-        android:background="@color/colorWhite"
-        >
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorFoody"
-            app:logo="@drawable/iconfoody"
-            >
-            <RelativeLayout
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorFoody"
+                app:logo="@drawable/icons_category_food"
                 >
-                <android.support.design.widget.TabLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:padding="0dp"
-                    android:id="@+id/tabs"
-                    app:tabBackground="@drawable/tab_color_selector"
-                    android:layout_centerHorizontal="true"
-                    app:tabTextColor="@color/colorWhite"
-                    app:tabSelectedTextColor="@color/colorBlack"
-                    app:tabIndicatorHeight="0dp"
-                    android:background="@drawable/back_ground_tab"
-                    app:tabTextAppearance="@style/capfale"
-                    >
-                </android.support.design.widget.TabLayout>
-            </RelativeLayout>
-        </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
-</android.support.design.widget.CoordinatorLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp">
+
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/tabs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/back_ground_tab"
+                        android:padding="0dp"
+                        app:tabBackground="@drawable/tab_color_selector"
+                        app:tabIndicatorHeight="0dp"
+                        app:tabSelectedTextColor="@color/colorBlack"
+                        app:tabTextAppearance="@style/capfale"
+                        app:tabTextColor="@color/colorWhite"></android.support.design.widget.TabLayout>
+                </RelativeLayout>
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <LinearLayout
+            android:id="@+id/linearButtonsHome"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:background="@color/colorGrayTrans"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/mainmenuicon_homeactive"
+                />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:backgroundTint="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/mainmenuicon_collection" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/mainmenuicon_search" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/mainmenuicon_notification"/>
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/icon356_profile" />
+        </LinearLayout>
+    </android.support.design.widget.CoordinatorLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/extra_layout"
+        android:visibility="gone">
+
+    </FrameLayout>
+
+</FrameLayout>

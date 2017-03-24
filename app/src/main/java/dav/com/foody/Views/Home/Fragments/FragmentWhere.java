@@ -185,7 +185,6 @@ public class FragmentWhere extends Fragment implements View.OnClickListener, IVi
                 break;
         }
     }
-
     private void hideFrame() {
         showType = false;
         showAddress = false;
@@ -193,18 +192,15 @@ public class FragmentWhere extends Fragment implements View.OnClickListener, IVi
         frameCategory.setVisibility(GONE);
         frameType.setVisibility(GONE);
     }
-
     private void btnCancel(ToggleButton button) {
         hideState();
         button.setChecked(false);
     }
-
     private void hideState() {
         lnContent.setVisibility(GONE);
         linearButtonsHome.setVisibility(View.VISIBLE);
         lnContentView.setVisibility(View.VISIBLE);
     }
-
     private void showState(LinearLayout linearLayout, FrameLayout fragment) {
         linearLayout.setVisibility(View.VISIBLE);
         fragment.setVisibility(View.VISIBLE);
@@ -244,6 +240,9 @@ public class FragmentWhere extends Fragment implements View.OnClickListener, IVi
 
     //Show list item foreach option
     private void showListItem(List<Item> items) {
+        if(txtNothing.getVisibility() == View.VISIBLE){
+            txtNothing.setVisibility(View.INVISIBLE);
+        }
         this.items = items;
         itemWhereAdapter = new ItemWhereAdapter(getContext(), R.layout.custom_one_row_where_item, items);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());

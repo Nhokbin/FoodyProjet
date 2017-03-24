@@ -98,7 +98,7 @@ public class ItemWhatAdapter extends RecyclerView.Adapter<ItemWhatAdapter.ViewHo
 
         holder.txtAddress.setText(item.getAddress());
 
-        if(item.getReviews().size()>=0){
+        if(item.getReviews().size()>0){
             Review review = item.getReviews().get(0);
             int imageResource = context.getResources().getIdentifier("ava" + review.getAvatar(), "drawable", context.getPackageName());
             if (imageResource != 0) {

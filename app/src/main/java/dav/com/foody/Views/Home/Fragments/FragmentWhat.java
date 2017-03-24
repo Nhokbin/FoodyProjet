@@ -1,5 +1,6 @@
 package dav.com.foody.Views.Home.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -34,6 +35,7 @@ import dav.com.foody.Presenters.Category.PresenterLogicCategory;
 import dav.com.foody.Presenters.Item.PresenterLogicItem;
 import dav.com.foody.Presenters.Type.PresenterLogicType;
 import dav.com.foody.R;
+import dav.com.foody.Views.ChangeCity.ChangeCityActivity;
 
 import static android.view.View.GONE;
 
@@ -106,7 +108,7 @@ public class FragmentWhat extends Fragment implements View.OnClickListener,IView
         cancelAddress = (Button) view.findViewById(R.id.btn_cancel_address);
         recyclerItems = (RecyclerView) view.findViewById(R.id.recycler_list_items);
         progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
-
+        txtNothing = (TextView) view.findViewById(R.id.txt_nothing);
         linearButtonsHome = (LinearLayout) getActivity().findViewById(R.id.linearButtonsHome);
 
         btnCategory.setOnClickListener(this);
@@ -188,6 +190,13 @@ public class FragmentWhat extends Fragment implements View.OnClickListener,IView
                 btnType.setChecked(false);
                 showAddress = !showAddress;
                 break;
+
+            case R.id.btn_change_city:
+
+                Intent iChangeCity = new Intent(getContext(), ChangeCityActivity.class);
+                getContext().startActivity(iChangeCity);
+
+                break;
         }
     }
     private void hideFrame() {
@@ -246,6 +255,9 @@ public class FragmentWhat extends Fragment implements View.OnClickListener,IView
 
     //Show list item foreach option
     private void showListItem(List<Item> items) {
+        if(txtNothing.getVisibility() == View.VISIBLE){
+            txtNothing.setVisibility(View.INVISIBLE);
+        }
         this.items = items;
         itemWhatAdapter = new ItemWhatAdapter(getContext(), R.layout.custom_one_row_what_item, items);
         LinearLayoutManager layoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
@@ -273,7 +285,6 @@ public class FragmentWhat extends Fragment implements View.OnClickListener,IView
     //setting for load more item
     @Override
     public void loadMore(int countItem) {
-
         List<Item> items;
         if (loadMoreByCate) {
             items = presenterLogicItem.getListItemByCategoryLoadMore(categoryId, countItem, frameProgress);
@@ -382,6 +393,9 @@ public class FragmentWhat extends Fragment implements View.OnClickListener,IView
 
     @Override
     public void error() {
-        txtNothing.setVisibility(View.VISIBLE);
+        if(txtNothing.getVisibility() == View.INVISIBLE){
+            txtNothing.setVisibility(View.VISIBLE);
+        }
+
     }
 }
