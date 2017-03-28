@@ -41,7 +41,6 @@
             android:textColor="@drawable/custome_toogle_button_text_color"
             android:textOff="TP.HCM"
             android:textOn="TP.HCM"
-
             />
     </LinearLayout>
     <LinearLayout

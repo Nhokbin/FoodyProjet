@@ -11,9 +11,9 @@ public class CreateDatabase{
     public static final String TB_CATEGORY_NAME = "NAME";
     public static final String TB_CATEGOGRY_IMG = "IMG";
 
-    public static final String TB_CATEGORYTYPE= "CATEGORYTYPE";
-    public static final String TB_CATEGORYTYPE_ID = "ID";
-    public static final String TB_CATEGORYTYPE_NAME = "NAME";
+    public static final String TB_CITY= "CITY";
+    public static final String TB_CITY_ID = "ID";
+    public static final String TB_CITY_NAME = "NAME";
 
     public static final String TB_TYPE = "TYPE";
     public static final String TB_TYPE_ID = "ID";

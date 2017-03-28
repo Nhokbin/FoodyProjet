@@ -303,7 +303,6 @@ public class FragmentWhere extends Fragment implements View.OnClickListener, IVi
         }
 
     }
-
     private void changeTextButton(String txt, ToggleButton button) {
         button.setText(txt);
         button.setTextOn(txt);
@@ -314,7 +313,6 @@ public class FragmentWhere extends Fragment implements View.OnClickListener, IVi
         hideFrame();
         hideState();
     }
-
     private void itemCategoryClick(int position, ToggleButton button) {
         String txt = categories.get(position).getName();
         changeTextButton(txt, button);
@@ -341,7 +339,6 @@ public class FragmentWhere extends Fragment implements View.OnClickListener, IVi
         }
 
     }
-
     private void itemTypeClick(int position, ToggleButton button) {
         String txt = types.get(position).getName();
         changeTextButton(txt, button);
@@ -361,7 +358,6 @@ public class FragmentWhere extends Fragment implements View.OnClickListener, IVi
         }
 
     }
-
     private void itemAddressClick(int position, ToggleButton button) {
         String txt = districts.get(position).getName();
         changeTextButton(txt, button);

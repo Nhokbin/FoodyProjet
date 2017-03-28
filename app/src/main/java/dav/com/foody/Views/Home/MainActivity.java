@@ -112,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menumain,menu);
@@ -122,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
     private String getPath(){
         return getApplicationInfo().dataDir + DB_PATH_SUFFIX +DATABASE_NAME;
     }
-
     private void HandlerCoppy(){
         File file = getDatabasePath(DATABASE_NAME);
         if(!file.exists()){
@@ -134,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
     private void CopyDatabaseFromAsset() {
         try{
             InputStream myInput = getAssets().open(DATABASE_NAME);

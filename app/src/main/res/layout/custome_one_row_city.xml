@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@color/colorWhite">
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/txt_city_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="10dp"
+        android:drawableTint="@color/colorFoody"
+        android:drawableLeft="@drawable/ic_done_white_24dp"
+        android:text="Quận 1"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_gravity="center_vertical"
+        />
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.9"/>
+    <TextView
+        android:id="@+id/txt_city_count"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        android:background="@color/colorWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="123 here"
+        android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"/>
+</LinearLayout>

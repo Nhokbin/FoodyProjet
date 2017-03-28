@@ -3,11 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
-
     <item
-        android:id="@+id/itSearch"
-        android:title="More"
-        android:icon="@drawable/ic_more_vert_white_24dp"
+        android:id="@+id/it_done"
+        android:title="@string/it_done"
         app:showAsAction="always"
+        
         />
 </menu>

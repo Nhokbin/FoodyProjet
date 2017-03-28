@@ -10,17 +10,28 @@
     </style>
     <style name="capfale" parent="TextAppearance.Design.Tab">
         <item name="textAllCaps">false</item>
-
     </style>
 
     <style name="Widget.Button.Toggle" parent="android:Widget">
         <item name="android:background">@drawable/custom_toggle_button</item>
         <item name="android:disabledAlpha">?android:attr/disabledAlpha</item>
     </style>
+
     <style name="toggleButton" parent="@android:style/Theme.Black">
         <item name="android:buttonStyleToggle">@style/Widget.Button.Toggle</item>
         <item name="android:textOn"></item>
         <item name="android:textOff"></item>
     </style>
 
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_keyboard_backspace_white_24dp</item>
+        <item name="actionMenuTextColor">@color/colorWhite</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>
+    <style name="AppTheme.ActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="actionMenuTextColor">@color/colorWhite</item>
+        <item name="android:actionMenuTextColor">@color/colorWhite</item>
+    </style>`
 </resources>

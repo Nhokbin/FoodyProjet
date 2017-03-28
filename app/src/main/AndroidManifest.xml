@@ -7,19 +7,23 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/android"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Views.Home.MainActivity">
+        </activity>
+        <activity android:name=".Views.ChangeCity.ChangeCityActivity" />
+
+        <activity android:name=".Views.FlashScreen.FlashScreenActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Views.ChangeCity.ChangeCityActivity"></activity>
     </application>
 
 </manifest>
