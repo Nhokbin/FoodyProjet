@@ -1,5 +1,6 @@
 package dav.com.foody.Views.ChangeCity;
 
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -19,6 +20,13 @@ import dav.com.foody.Presenters.City.IPresenterCity;
 import dav.com.foody.Presenters.City.PresenterLogicCity;
 import dav.com.foody.R;
 
+import static dav.com.foody.Views.Home.Fragments.FragmentWhat.RESULT_CITY;
+import static dav.com.foody.Views.Home.Fragments.FragmentWhere.RESULT_CITY_WHERE;
+import static dav.com.foody.Views.Home.MainActivity.cityPosition;
+import static dav.com.foody.Views.Home.MainActivity.cityPositionWhere;
+import static dav.com.foody.Views.Home.MainActivity.nameCity;
+import static dav.com.foody.Views.Home.MainActivity.nameCityWhere;
+
 public class ChangeCityActivity extends AppCompatActivity implements View.OnClickListener, IVewCity, AdapterView.OnItemClickListener {
 
     Toolbar toolbar;
@@ -28,10 +36,11 @@ public class ChangeCityActivity extends AppCompatActivity implements View.OnClic
 
     CityAdapter cityAdapter;
 
-    int flag = -1;
+    List<City> cities;
+
+    int flag = -1; //what = 1 , where = 2
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_city);
@@ -46,10 +55,16 @@ public class ChangeCityActivity extends AppCompatActivity implements View.OnClic
         upArrow.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
         getSupportActionBar().setHomeAsUpIndicator(upArrow);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getIntent().getAction().equals("What")) {
+            flag = 1;
+        } else {
+            flag = 2;
+        }
 
         iPresenterCity = new PresenterLogicCity(this, this);
 
         iPresenterCity.getListCity();
+
     }
 
     @Override
@@ -70,19 +85,15 @@ public class ChangeCityActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void showListCities(List<City> cities) {
+        this.cities = cities;
         cityAdapter = new CityAdapter(this, R.layout.custome_one_row_city, cities);
         lvChangeCity.setAdapter(cityAdapter);
 
-       /* lvChangeCity.post(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        });*/
-        if (flag == -1) {
-            cityAdapter.setSelectedPost(0);
+        if(flag == 1){
+            cityAdapter.setSelectedPost(cityPosition);
+        }else {
+            cityAdapter.setSelectedPost(cityPositionWhere);
         }
-
         lvChangeCity.setOnItemClickListener(this);
         cityAdapter.notifyDataSetChanged();
     }
@@ -92,13 +103,30 @@ public class ChangeCityActivity extends AppCompatActivity implements View.OnClic
 
     }
 
+    private void settingResult(int position){
+        cityAdapter.setSelectedPost(position);
+        Intent intent = getIntent();
+        intent.putExtra("id", cities.get(position).getId());
+        if(flag == 1){
+            nameCity = cities.get(position).getName();
+            cityPosition = position;
+            setResult(RESULT_CITY, intent);
+        }else{
+            //where
+            nameCityWhere = cities.get(position).getName();
+            cityPositionWhere = position;
+            setResult(RESULT_CITY_WHERE, intent);
+        }
+
+        finish();
+    }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        settingResult(position);
     }
 
     @Override
     public void onClick(View v) {
-
     }
 }

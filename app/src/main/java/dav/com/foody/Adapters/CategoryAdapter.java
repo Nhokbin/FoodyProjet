@@ -26,6 +26,7 @@ public class CategoryAdapter extends BaseAdapter {
     List<Category> cateogories;
     ViewHolderShowListCategory viewHolder;
 
+
     private int selectedPos = -1;
 
     public int getSelectedPos() {
@@ -36,7 +37,6 @@ public class CategoryAdapter extends BaseAdapter {
         this.selectedPos = selectedPos;
         notifyDataSetChanged();
     }
-
 
 
     public CategoryAdapter(Context context, int layout, List<Category> cateogories){

@@ -24,7 +24,6 @@
                 android:background="@color/colorFoody"
                 app:logo="@drawable/icons_category_food"
                 >
-
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="35dp">
@@ -114,5 +113,7 @@
         android:visibility="gone">
 
     </FrameLayout>
+
+
 
 </FrameLayout>

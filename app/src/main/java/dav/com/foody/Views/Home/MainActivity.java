@@ -28,17 +28,28 @@ import dav.com.foody.R;
 import dav.com.foody.Views.Home.Fragments.FragmentFooterMenu;
 
 
+
 public class MainActivity extends AppCompatActivity {
+
     Toolbar toolbar;
     TabLayout tabLayout;
     ViewPager viewPager;
     LinearLayout linearButtonsHome;
+
+    public static String nameCity = "TP.HCM";
+    public static Integer cityPosition = 0;
+
+
+    public static String nameCityWhere ="TP.HCM";
+    public static Integer cityPositionWhere = 0;
+
     FrameLayout mExtraLayout;
 
 
     public final static String DATABASE_NAME="Foody.sqlite";
     String DB_PATH_SUFFIX = "/databases/";
     public static SQLiteDatabase database = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,8 +110,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Create new fragment and transaction
+
         FragmentFooterMenu newFragment = new FragmentFooterMenu();
+
+
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
         transaction.replace(R.id.extra_layout, newFragment);

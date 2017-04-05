@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,10 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TabHost;
+import android.widget.TabWidget;
 import android.widget.TextView;
-import android.widget.ToggleButton;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -38,34 +41,39 @@ import dav.com.foody.R;
 import dav.com.foody.Views.ChangeCity.ChangeCityActivity;
 
 import static android.view.View.GONE;
+import static dav.com.foody.Views.Home.MainActivity.nameCity;
 
 
 /**
  * Created by binhb on 03/03/2017.
  */
 
-public class FragmentWhat extends Fragment implements View.OnClickListener,IViewNew,ILoadMore, AdapterView.OnItemClickListener{
+public class FragmentWhat extends Fragment implements TabHost.OnTabChangeListener, View.OnClickListener, IViewNew, ILoadMore, AdapterView.OnItemClickListener {
 
-
-    ToggleButton btnCategory, btnType, btnAddress;
-    FrameLayout frameCategory, frameType, frameAddress, frameProgress;
+    FrameLayout frameProgress, tabcontent;
     ListView lvCategory, lvType, lvAddress;
     LinearLayout lnContent, linearButtonsHome, lnContentView;
     Button cancelCategory, cancelType, cancelAddress, btnChangeCity;
     RecyclerView recyclerItems;
     ProgressBar progressBar;
     TextView txtNothing;
+    TabHost tabHost;
+    TabWidget tabWidget;
+    TextView tvCategory, tvType, tvAddress, txtNameCity;
 
-    boolean showCategory = false;
-    boolean showType = false;
-    boolean showAddress = false;
+    public static final int REQUEST_CITY = 1231;
+    public static final int RESULT_CITY = 2131;
+
     boolean loadMoreByCate = true;
     boolean loadMoreByType = false;
     boolean loadMoreByDis = false;
 
+    int showTab; // 0 ->tab=0 1->tab=1 2->tab=2 3->tab=3
+
     int categoryId = 2;
     int typeID = -1;
     int districtId = -1;
+
 
     ItemWhatAdapter itemWhatAdapter;
     CategoryAdapter categoryAdapter;
@@ -88,20 +96,14 @@ public class FragmentWhat extends Fragment implements View.OnClickListener,IView
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_content,container,false);
+        View view = inflater.inflate(R.layout.layout_content, container, false);
 
-        btnCategory = (ToggleButton) view.findViewById(R.id.btnCategory);
-        btnType = (ToggleButton) view.findViewById(R.id.btnType);
-        btnAddress = (ToggleButton) view.findViewById(R.id.btnAddress);
         btnChangeCity = (Button) view.findViewById(R.id.btn_change_city);
         lvCategory = (ListView) view.findViewById(R.id.lvCategory);
         lvType = (ListView) view.findViewById(R.id.lvType);
         lvAddress = (ListView) view.findViewById(R.id.lvAddress);
         lnContent = (LinearLayout) view.findViewById(R.id.lnContent);
         lnContentView = (LinearLayout) view.findViewById(R.id.linear_conent);
-        frameCategory = (FrameLayout) view.findViewById(R.id.frame_category);
-        frameType = (FrameLayout) view.findViewById(R.id.frame_type);
-        frameAddress = (FrameLayout) view.findViewById(R.id.frame_address);
         frameProgress = (FrameLayout) view.findViewById(R.id.frame_progress);
         cancelCategory = (Button) view.findViewById(R.id.btn_cancel_category);
         cancelType = (Button) view.findViewById(R.id.btn_cancel_type);
@@ -109,19 +111,57 @@ public class FragmentWhat extends Fragment implements View.OnClickListener,IView
         recyclerItems = (RecyclerView) view.findViewById(R.id.recycler_list_items);
         progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
         txtNothing = (TextView) view.findViewById(R.id.txt_nothing);
+        txtNameCity = (TextView) view.findViewById(R.id.txt_name_city);
+
+        tabHost = (TabHost) view.findViewById(R.id.tabHost);
+        tabcontent = (FrameLayout) view.findViewById(android.R.id.tabcontent);
         linearButtonsHome = (LinearLayout) getActivity().findViewById(R.id.linearButtonsHome);
 
-        btnCategory.setOnClickListener(this);
-        btnAddress.setOnClickListener(this);
-        btnType.setOnClickListener(this);
+        tabHost.setup();
+        //Lets add the fake Tab
+        TabHost.TabSpec mSpec = tabHost.newTabSpec("Fake Tab");
+        mSpec.setContent(R.id.ln_category);
+        mSpec.setIndicator("Fake tab");
+        tabHost.addTab(mSpec);
+        //Lets add the first Tab
+        mSpec = tabHost.newTabSpec("First Tab");
+        mSpec.setContent(R.id.ln_category);
+        mSpec.setIndicator("Mới nhất");
+        tabHost.addTab(mSpec);
+        //Lets add the second Tab
+        mSpec = tabHost.newTabSpec("Second Tab");
+        mSpec.setContent(R.id.ln_type);
+        mSpec.setIndicator("Danh mục");
+        tabHost.addTab(mSpec);
+        //Lets add the third Tab
+        mSpec = tabHost.newTabSpec("Third Tab");
+        mSpec.setContent(R.id.ln_address);
+        mSpec.setIndicator("TP.HCM");
+        tabHost.addTab(mSpec);
+
+        tabHost.setCurrentTab(0);
+        tabHost.getTabWidget().getChildTabViewAt(0).setVisibility(GONE);
+
+        tabWidget = tabHost.getTabWidget();
+        tabWidget.getChildAt(2).setBackgroundResource(R.drawable.tab_bg_selected);
+
+        tvCategory = (TextView) tabWidget.getChildTabViewAt(1).findViewById(android.R.id.title);
+        tvType = (TextView) tabWidget.getChildTabViewAt(2).findViewById(android.R.id.title);
+        tvAddress = (TextView) tabWidget.getChildTabViewAt(3).findViewById(android.R.id.title);
+
+        tvCategory.setAllCaps(false);
+        tvType.setAllCaps(false);
+        tvAddress.setAllCaps(false);
+
+        tabHost.setOnTabChangedListener(this);
         cancelCategory.setOnClickListener(this);
         cancelType.setOnClickListener(this);
         cancelAddress.setOnClickListener(this);
 
-        presenterLogicCategory = new PresenterLogicCategory(this,getContext());
-        presenterLogicType = new PresenterLogicType(this,getContext());
-        presenterLogicAddress = new PresenterLogicAddress(this,getContext());
-        presenterLogicItem = new PresenterLogicItem(getContext(),this);
+        presenterLogicCategory = new PresenterLogicCategory(this, getContext());
+        presenterLogicType = new PresenterLogicType(this, getContext());
+        presenterLogicAddress = new PresenterLogicAddress(this, getContext());
+        presenterLogicItem = new PresenterLogicItem(getContext(), this);
 
 
         presenterLogicCategory.getListNewsByWhat();
@@ -129,100 +169,94 @@ public class FragmentWhat extends Fragment implements View.OnClickListener,IView
         presenterLogicAddress.getListAddress(1);
         presenterLogicItem.getListItemByCategory(2);
 
+        addEvent();
 
+        txtNameCity.setText(nameCity);
 
         return view;
     }
 
+    //hide tabcontent
+    private void hideState(){
+        showTab = 0;
+        tabHost.setCurrentTab(0);
+        tabcontent.setVisibility(GONE);
+        linearButtonsHome.setVisibility(View.VISIBLE);
+        lnContentView.setVisibility(View.VISIBLE);
+    }
 
-    //setting foreach fragment
+    //show tabcontent
+    private void showState(int tab){
+        tabHost.setCurrentTab(tab);
+        tabcontent.setVisibility(View.VISIBLE);
+        linearButtonsHome.setVisibility(GONE);
+        lnContentView.setVisibility(GONE);
+        showTab = tab;
+    }
+
+    //change state tab with id is a current tab
+    private void changeTab(int tab) {
+        if (showTab == tab) { //twice click
+            hideState();
+        } else { // first click
+            showState(tab);
+        }
+    }
+
+    //setting click for tab widget
+    private void addEvent() {
+        tabWidget.getChildAt(1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeTab(1);
+            }
+        });
+        tabWidget.getChildAt(2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeTab(2);
+            }
+        });
+        tabWidget.getChildAt(3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeTab(3);
+            }
+        });
+    }
+
+
     @Override
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
+            //setting for each button cancel
             case R.id.btn_cancel_category:
-                showCategory = !showCategory;
-                btnCancel(btnCategory);
-                break;
-
             case R.id.btn_cancel_type:
-                showType = !showType;
-                btnCancel(btnType);
-                break;
-
             case R.id.btn_cancel_address:
-                showAddress = !showType;
-                btnCancel(btnAddress);
+                hideState();
                 break;
 
-            case R.id.btnCategory:
-                hideFrame();
-                if (btnCategory.isChecked() != false) {
-                    showState(lnContent, frameCategory);
-                } else {
-                    hideState();
-                }
-                btnType.setChecked(false);
-                btnAddress.setChecked(false);
-                showCategory = !showCategory;
-                break;
-
-            case R.id.btnType:
-                hideFrame();
-                if (btnType.isChecked() != false) {
-                    showState(lnContent, frameType);
-                } else {
-                    hideState();
-                }
-                btnCategory.setChecked(false);
-                btnAddress.setChecked(false);
-                showType = !showType;
-                break;
-
-            case R.id.btnAddress:
-                hideFrame();
-                if (btnAddress.isChecked() != false) {
-                    showState(lnContent, frameAddress);
-                } else {
-                    hideState();
-                }
-                btnCategory.setChecked(false);
-                btnType.setChecked(false);
-                showAddress = !showAddress;
-                break;
-
+            //open activity change city
             case R.id.btn_change_city:
-
                 Intent iChangeCity = new Intent(getContext(), ChangeCityActivity.class);
-                getContext().startActivity(iChangeCity);
+                iChangeCity.setAction("What");
+                startActivityForResult(iChangeCity,REQUEST_CITY);
 
                 break;
         }
     }
-    private void hideFrame() {
-        showType = false;
-        showAddress = false;
-        showCategory = false;
-        frameCategory.setVisibility(GONE);
-        frameType.setVisibility(GONE);
-    }
-    private void btnCancel(ToggleButton button) {
-        hideState();
-        button.setChecked(false);
-    }
-    private void hideState() {
-        lnContent.setVisibility(GONE);
-        linearButtonsHome.setVisibility(View.VISIBLE);
-        lnContentView.setVisibility(View.VISIBLE);
-    }
-    private void showState(LinearLayout linearLayout, FrameLayout fragment) {
-        linearLayout.setVisibility(View.VISIBLE);
-        fragment.setVisibility(View.VISIBLE);
-        linearButtonsHome.setVisibility(GONE);
-        lnContentView.setVisibility(GONE);
-    }
-    //end setting foreach fragment
 
+    //setting backgound for each tab widget
+    @Override
+    public void onTabChanged(String tabId) {
+        for (int i = 0; i < tabWidget.getChildCount(); i++) {
+            tabWidget.getChildAt(i)
+                    .setBackgroundResource(R.drawable.tab_bg_selected); // unselected
+        }
+        tabWidget.getChildAt(tabHost.getCurrentTab())
+                .setBackgroundResource(R.drawable.tab_bg_unselected); // selected
+    }
 
     //load data fragmeLayout
     @Override
@@ -255,27 +289,33 @@ public class FragmentWhat extends Fragment implements View.OnClickListener,IView
 
     //Show list item foreach option
     private void showListItem(List<Item> items) {
-        if(txtNothing.getVisibility() == View.VISIBLE){
+        if (txtNothing.getVisibility() == View.VISIBLE) {
             txtNothing.setVisibility(View.INVISIBLE);
         }
+        Log.d("13123","123123213");
         this.items = items;
         itemWhatAdapter = new ItemWhatAdapter(getContext(), R.layout.custom_one_row_what_item, items);
-        LinearLayoutManager layoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
+        LinearLayoutManager layoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
         recyclerItems.setLayoutManager(layoutManager);
         recyclerItems.setAdapter(itemWhatAdapter);
+
+        recyclerItems.setNestedScrollingEnabled(false);
 
         itemWhatAdapter.notifyDataSetChanged();
         loadMore = new LoadMore(layoutManager, this, true);
         recyclerItems.addOnScrollListener(loadMore);
     }
+
     @Override
     public void showListItemByCategory(List<Item> items) {
         showListItem(items);
     }
+
     @Override
     public void showListItemByType(List<Item> items) {
         showListItem(items);
     }
+
     @Override
     public void showListItemByAddress(List<Item> items) {
         showListItem(items);
@@ -297,6 +337,7 @@ public class FragmentWhat extends Fragment implements View.OnClickListener,IView
         this.items.addAll(items);
         itemWhatAdapter.notifyDataSetChanged();
     }
+
     private void chageLoadMore() {
         loadMoreByCate = false;
         loadMoreByDis = false;
@@ -308,28 +349,24 @@ public class FragmentWhat extends Fragment implements View.OnClickListener,IView
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         chageLoadMore();
-        if (parent.getAdapter() == categoryAdapter) {
-            itemCategoryClick(position, btnCategory);
+       if (parent.getAdapter() == categoryAdapter) {
+            itemCategoryClick(position, tvCategory);
         } else if (parent.getAdapter() == typeAdapter) {
-            itemTypeClick(position, btnType);
+            itemTypeClick(position, tvType);
         } else if (parent.getAdapter() == addressAdapter) {
-            itemAddressClick(position, btnAddress);
+            itemAddressClick(position, tvAddress);
         }
 
     }
-    private void changeTextButton(String txt, ToggleButton button) {
-        button.setText(txt);
-        button.setTextOn(txt);
-        button.setTextOff(txt);
-        button.setTextColor(getResources().getColor(R.color.colorFoody));
-        button.setChecked(false);
-        items.removeAll(items);
-        hideFrame();
+
+    private void changeTextButton(String txt, TextView textView) {
+        textView.setText(txt);
+        textView.setTextColor(getResources().getColor(R.color.colorFoody));
         hideState();
     }
-    private void itemCategoryClick(int position, ToggleButton button) {
+    private void itemCategoryClick(int position, TextView textView) {
         String txt = categories.get(position).getName();
-        changeTextButton(txt, button);
+        changeTextButton(txt, textView);
 
         categoryAdapter.setSelectedPos(position);
 
@@ -353,9 +390,9 @@ public class FragmentWhat extends Fragment implements View.OnClickListener,IView
         }
 
     }
-    private void itemTypeClick(int position, ToggleButton button) {
+    private void itemTypeClick(int position, TextView textView) {
         String txt = types.get(position).getName();
-        changeTextButton(txt, button);
+        changeTextButton(txt, textView);
 
         typeAdapter.setSelectdPos(position);
         itemWhatAdapter.clearData();
@@ -372,9 +409,9 @@ public class FragmentWhat extends Fragment implements View.OnClickListener,IView
         }
 
     }
-    private void itemAddressClick(int position, ToggleButton button) {
+    private void itemAddressClick(int position, TextView textView) {
         String txt = districts.get(position).getName();
-        changeTextButton(txt, button);
+        changeTextButton(txt, textView);
 
         addressAdapter.setSelectPos(position);
         itemWhatAdapter.clearData();
@@ -392,10 +429,28 @@ public class FragmentWhat extends Fragment implements View.OnClickListener,IView
 
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CITY){
+            try{
+                presenterLogicAddress.getListAddress(data.getIntExtra("id",0));
+                Log.d("kt123213",123213+"");
+                Toast.makeText(getContext(),data.getIntExtra("id",0)+"",Toast.LENGTH_LONG).show();
+                txtNameCity.setText(nameCity);
+            }catch (Exception ex){
+
+            }
+        }
+    }
+
+    @Override
     public void error() {
-        if(txtNothing.getVisibility() == View.INVISIBLE){
+        if (txtNothing.getVisibility() == View.INVISIBLE) {
             txtNothing.setVisibility(View.VISIBLE);
         }
 
     }
+
+
+
 }
