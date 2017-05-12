@@ -6,9 +6,9 @@ import java.util.List;
 
 import dav.com.foody.Model.ModelCategory;
 import dav.com.foody.Objects.Category;
-import dav.com.foody.Views.Home.Fragments.IViewNew;
+import dav.com.foody.Views.Main.Home.Fragments.IViewNew;
 
-import static dav.com.foody.Views.Home.MainActivity.database;
+import static dav.com.foody.Views.Main.Home.HomeActivity.database;
 
 /**
  * Created by binhb on 04/03/2017.

@@ -11,7 +11,11 @@ public class City implements Serializable {
 
     Integer id;
     String name;
+    Integer count;
+    String url;
+    Integer dataId;
     List<District> districts;
+
     public Integer getId() {
         return id;
     }
@@ -26,6 +30,30 @@ public class City implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Integer getDataId() {
+        return dataId;
+    }
+
+    public void setDataId(Integer dataId) {
+        this.dataId = dataId;
     }
 
     public List<District> getDistricts() {

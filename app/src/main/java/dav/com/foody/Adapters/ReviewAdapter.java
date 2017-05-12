@@ -57,12 +57,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     public void onBindViewHolder(ReviewAdapter.ViewHolderShowListReview holder, int position) {
         Review review = reviews.get(position);
 
-        int imageResource = context.getResources().getIdentifier("ava"+review.getAvatar(), "drawable", context.getPackageName());
-        if(imageResource != 0){
-            Picasso.with(context).load(imageResource).fit().centerInside().into(holder.imgAvatar);
-        }else{
-            Picasso.with(context).load(R.drawable.ava3).fit().centerInside().into(holder.imgAvatar);
-        }
+        Picasso.with(context).load(review.getAvatar()).fit().centerInside().into(holder.imgAvatar);
         holder.txtName.setText(review.getName());
         holder.txtRating.setText(String.format("%.1f",review.getRating())+"");
         holder.txtComment.setText(review.getCommmentTrim());

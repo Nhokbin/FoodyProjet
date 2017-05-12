@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,12 +21,12 @@ import dav.com.foody.Presenters.City.IPresenterCity;
 import dav.com.foody.Presenters.City.PresenterLogicCity;
 import dav.com.foody.R;
 
-import static dav.com.foody.Views.Home.Fragments.FragmentWhat.RESULT_CITY;
-import static dav.com.foody.Views.Home.Fragments.FragmentWhere.RESULT_CITY_WHERE;
-import static dav.com.foody.Views.Home.MainActivity.cityPosition;
-import static dav.com.foody.Views.Home.MainActivity.cityPositionWhere;
-import static dav.com.foody.Views.Home.MainActivity.nameCity;
-import static dav.com.foody.Views.Home.MainActivity.nameCityWhere;
+import static dav.com.foody.Views.Main.Home.Fragments.FragmentWhat.RESULT_CITY;
+import static dav.com.foody.Views.Main.Home.Fragments.FragmentWhere.RESULT_CITY_WHERE;
+import static dav.com.foody.Views.Main.Home.HomeActivity.cityPosition;
+import static dav.com.foody.Views.Main.Home.HomeActivity.cityPositionWhere;
+import static dav.com.foody.Views.Main.Home.HomeActivity.nameCity;
+import static dav.com.foody.Views.Main.Home.HomeActivity.nameCityWhere;
 
 public class ChangeCityActivity extends AppCompatActivity implements View.OnClickListener, IVewCity, AdapterView.OnItemClickListener {
 
@@ -55,6 +56,8 @@ public class ChangeCityActivity extends AppCompatActivity implements View.OnClic
         upArrow.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
         getSupportActionBar().setHomeAsUpIndicator(upArrow);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         if (getIntent().getAction().equals("What")) {
             flag = 1;
         } else {
@@ -63,8 +66,10 @@ public class ChangeCityActivity extends AppCompatActivity implements View.OnClic
 
         iPresenterCity = new PresenterLogicCity(this, this);
 
-        iPresenterCity.getListCity();
-
+        if(cities == null || cities.size()<=0){
+            Log.d("getdata","123123123");
+            iPresenterCity.getListCity();
+        }
     }
 
     @Override

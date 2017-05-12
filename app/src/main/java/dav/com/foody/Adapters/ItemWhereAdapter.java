@@ -8,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -42,10 +44,10 @@ public class ItemWhereAdapter extends RecyclerView.Adapter<ItemWhereAdapter.View
         VideoView videoItem;
         RecyclerView recyclerImg, recyclerReview;
         Button btnComment, btnPicture, btnOderNow, btnCountComment, btnCountPicture;
+        ProgressBar progressBar;
 
         public ViewHolderShowListItem(View itemView) {
             super(itemView);
-
             txtName = (TextView) itemView.findViewById(R.id.txt_name_one_item);
             txtAvgRating = (TextView) itemView.findViewById(R.id.txt_avg_rating);
             txtAddress = (TextView) itemView.findViewById(R.id.txt_address_one_item);
@@ -53,6 +55,7 @@ public class ItemWhereAdapter extends RecyclerView.Adapter<ItemWhereAdapter.View
             btnComment = (Button) itemView.findViewById(R.id.btn_count_comment);
             btnPicture = (Button) itemView.findViewById(R.id.btn_count_picture);
             btnOderNow = (Button) itemView.findViewById(R.id.btn_oder_now);
+            progressBar = (ProgressBar) itemView.findViewById(R.id.progress_bar_download);
             btnCountComment = (Button) itemView.findViewById(R.id.btn_count_comment);
             btnCountPicture = (Button) itemView.findViewById(R.id.btn_count_picture);
             imgItem = (ImageView) itemView.findViewById(R.id.img_one_item);
@@ -72,19 +75,22 @@ public class ItemWhereAdapter extends RecyclerView.Adapter<ItemWhereAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(ViewHolderShowListItem holder, int position) {
+    public void onBindViewHolder(final ViewHolderShowListItem holder, int position) {
         Item item = items.get(position);
 
        if(!item.getImg().equals("")){
-           // String uri = "drawable/fdi"+item.getImg();
-            int imageResource = context.getResources().getIdentifier("fdi"+item.getImg(), "drawable", context.getPackageName());
-            //Drawable image = context.getResources().getDrawable(imageResource);
-            if(imageResource != 0){
-                Picasso.with(context).load(imageResource).fit().centerInside().into(holder.imgItem);
-            }else{
-                Picasso.with(context).load(R.drawable.fdi1).fit().centerInside().into(holder.imgItem);
-            }
 
+           Picasso.with(context).load(item.getImg()).fit().centerInside().into(holder.imgItem, new Callback() {
+               @Override
+               public void onSuccess() {
+                   holder.progressBar.setVisibility(View.GONE);
+               }
+
+               @Override
+               public void onError() {
+
+               }
+           });
         }else{
             holder.imgItem.setImageDrawable(null);
         }

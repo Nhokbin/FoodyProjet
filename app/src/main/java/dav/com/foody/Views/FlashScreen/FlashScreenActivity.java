@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 
 import dav.com.foody.R;
-import dav.com.foody.Views.Home.MainActivity;
+import dav.com.foody.Views.Login.LoginActivity;
 
 public class FlashScreenActivity extends AppCompatActivity {
     ProgressBar progressBar;
@@ -25,7 +25,7 @@ public class FlashScreenActivity extends AppCompatActivity {
                 }catch (Exception e){
 
                 }finally{
-                    Intent intent=new Intent(FlashScreenActivity.this,MainActivity.class);
+                    Intent intent=new Intent(FlashScreenActivity.this,LoginActivity.class);
                     startActivity(intent); finish();
                 }
             }

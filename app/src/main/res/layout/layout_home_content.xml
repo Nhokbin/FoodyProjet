@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TabHost
+        android:id="@+id/tabHost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        >
+        <LinearLayout
+            android:id="@+id/lnContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/lnButtons"
+            android:orientation="vertical"
+            >
+            <TabWidget
+                android:background="@drawable/tab_bg_selector"
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:tabStripEnabled="false"
+                >
+            </TabWidget>
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/tab_bg_unselected"
+                android:visibility="gone"
+                >
+                <LinearLayout
+                    android:id="@+id/ln_category"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ListView
+                        android:id="@+id/lvCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </ListView>
+                    <Button
+                        android:id="@+id/btn_cancel_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:background="@color/colorWhite"
+                        android:text="@string/btn_cancel" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ln_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_name_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:drawableRight="@drawable/iconfoody"
+                        android:gravity="center_vertical"
+                        android:text="@string/name_list_type"
+                        android:textColor="@color/colorFoody" />
+
+                    <ListView
+                        android:id="@+id/lvType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                    </ListView>
+
+                    <Button
+                        android:id="@+id/btn_cancel_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:background="@color/colorWhite"
+                        android:text="@string/btn_cancel" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ln_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <LinearLayout
+                        android:layout_margin="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txt_name_city"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Something here"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorFoody"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.9" />
+
+                        <Button
+                            android:padding="5dp"
+                            android:textAllCaps="false"
+                            android:textSize="8sp"
+                            android:id="@+id/btn_change_city"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorGray"
+                            android:drawableLeft="@drawable/ic_near_me_black_24dp"
+                            android:drawableTint="@color/colorBlack"
+                            android:text="@string/btn_change_city"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBlack"
+                            />
+
+                    </LinearLayout>
+
+                    <ListView
+                        android:id="@+id/lvAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"></ListView>
+
+                    <Button
+                        android:id="@+id/btn_cancel_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:text="Hủy" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
+    <LinearLayout
+        android:id="@+id/linear_conent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tabHost"
+        android:layout_marginTop="45dp"
+        android:background="@color/colorGray"
+        android:orientation="vertical">
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewPagerSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:visibility="gone">
+
+                </android.support.v4.view.ViewPager>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                 >
+                </android.support.v7.widget.RecyclerView>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_list_items"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                   ></android.support.v7.widget.RecyclerView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize" />
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <TextView
+            android:id="@+id/txt_nothing"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/dn_ic_view_error"
+            android:text="@string/txt_nothing"
+            android:textAlignment="center"
+            android:textColor="@color/colorFoody"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/frame_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@color/colorGray"
+        android:visibility="gone"
+        >
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recycler_list_items"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:visibility="visible" />
+    </FrameLayout>
+</FrameLayout>

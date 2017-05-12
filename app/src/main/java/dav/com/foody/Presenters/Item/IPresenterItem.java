@@ -13,11 +13,18 @@ import dav.com.foody.Objects.Item;
 public interface IPresenterItem {
 
     void getListItemByCategory(int categoryId);
+    void getListDishByCategory(int categoryId);
+
     List<Item> getListItemByCategoryLoadMore(int categoryId, int index, FrameLayout frameProgress);
+    List<Item> getListDishByCategoryLoadMore(int categoryId, int index, FrameLayout frameProgress);
 
     void getListItemByType(int categoryID, int typeId);
     List<Item> getListItemByTypeLoadMore(int categoryID ,int typeId, int index, FrameLayout frameProgress);
 
     void getListItemByAddress(int[] id);
     List<Item> getLisstItemByAddressLoadMore(int[] id, int index, FrameLayout frameProgress);
+
+    void getListDishByType(int categoryId, int typeID);
+
+    List<Item> getListDishByTypeLoadMore(int categoryId, int typeID, int countItem, FrameLayout frameProgress);
 }

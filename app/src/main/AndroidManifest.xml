@@ -3,8 +3,10 @@
     package="dav.com.foody">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@drawable/android"
@@ -12,17 +14,28 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Views.Home.MainActivity">
-        </activity>
-        <activity android:name=".Views.ChangeCity.ChangeCityActivity" />
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
 
-        <activity android:name=".Views.FlashScreen.FlashScreenActivity"
+        <activity android:name=".Views.Main.Home.HomeActivity" />
+        <activity android:name=".Views.ChangeCity.ChangeCityActivity" />
+        <activity
+            android:name=".Views.FlashScreen.FlashScreenActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Views.Main.MainActivity" />
+        <activity android:name=".Views.Main.Album.AlbumActivity" />
+        <activity android:name=".Views.Main.Search.SearchActivity" />
+        <activity android:name=".Views.Main.Notification.NotificationActivity" />
+        <activity android:name=".Views.Main.Profile.ProfileActivity" />
+        <activity android:name=".Views.Login.LoginActivity" />
+        <activity android:name=".Views.Register.RegisterActivity" />
+        <activity android:name=".Views.AddItem.AddItemActivity">
+
         </activity>
     </application>
 

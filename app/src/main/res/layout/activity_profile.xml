@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="dav.com.foody.Views.Main.Profile.ProfileActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorFoody" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/colorBlack"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_profile_avatar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/custom_border_avatar"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ava0" />
+
+            <TextView
+                android:id="@+id/txt_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:text="Something here"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.9" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Xem hoạt động"
+                android:textColor="@color/colorWhite" />
+        </LinearLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorGray">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:padding="5dp"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lịch sử đặt chỗ"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/icon356_tablenow"
+                />
+            <TextView
+                android:padding="5dp"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lịch sử đặt giao hàng"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/icon356_delivery"
+                />
+            <TextView
+                android:padding="5dp"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lịch sử Coupon"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/icon356_e_coupon"
+                />
+            <TextView
+                android:padding="5dp"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lịch sử Ăn tại quán/ Mang đi"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/icon356_e_coupon"
+                />
+
+            <TextView
+                android:padding="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thông tin liên hệ"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/icon356_e_coupon"
+                />
+            <TextView
+                android:padding="5dp"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tiền thưởng"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/icon356_e_coupon"
+                />
+            <TextView
+                android:padding="5dp"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Quét mã bàn đặt món"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/icon356_e_coupon"
+                />
+            <TextView
+                android:padding="5dp"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thanh toán"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/icon356_e_coupon"
+                />
+
+            <TextView
+                android:padding="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thiết lập tài khoản"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/icon356_e_coupon"
+                />
+
+            <TextView
+                android:padding="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mời bạn bè"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/icon356_e_coupon"
+                />
+            <TextView
+                android:padding="5dp"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Góp ý"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/icon356_e_coupon"
+                />
+            <TextView
+                android:padding="5dp"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cài đặt ứng dụng"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/icon356_e_coupon"
+                />
+
+            <TextView
+                android:padding="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đăng xuất"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/tn_ic_logout"
+                />
+
+            <TextView
+                android:padding="5dp"
+                android:background="@color/colorGray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Version 2.0"
+                android:textColor="@color/colorBlack"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:padding="5dp"
+                android:background="@color/colorGray"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:textColor="@color/colorBlack"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

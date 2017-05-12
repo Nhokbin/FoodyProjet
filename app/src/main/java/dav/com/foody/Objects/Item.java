@@ -12,7 +12,10 @@ public class Item implements Serializable{
     Integer id,restaurantId,categoryId,districtId,totalPictures,totalReviews,typeId;
     Double avgRating;
     String address,name,img;
+    String resName;
     List<Review> reviews;
+    String createDate;
+    User user;
 
     public Integer getTypeId() {
         return typeId;
@@ -109,4 +112,30 @@ public class Item implements Serializable{
     public void setTotalReviews(Integer totalReviews) {
         this.totalReviews = totalReviews;
     }
+
+    public String getResName() {
+        return resName;
+    }
+
+    public void setResName(String resName) {
+        this.resName = resName;
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
 }

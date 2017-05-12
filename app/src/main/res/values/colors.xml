@@ -10,4 +10,6 @@
     <color name="colorAvgRating">#03ae03</color>
     <color name="colorGrayTrans">#CCCCCCCC</color>
     <color name="colorTextSelect">#00f</color>
+    <color name="transparentBackgroundLogin">#33000000</color>
+    <color name="colorFacebook">#189aca</color>
 </resources>

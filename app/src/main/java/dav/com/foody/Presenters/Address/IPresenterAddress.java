@@ -6,4 +6,9 @@ package dav.com.foody.Presenters.Address;
 
 public interface IPresenterAddress {
     void getListAddress(int cityId);
+    void getListCities();
+
+    void getListDistricts(int cityId);
+
+
 }

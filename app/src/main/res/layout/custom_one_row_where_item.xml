@@ -53,27 +53,42 @@
 
 
     </LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/progress_bar_download"
+            />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <VideoView
+                android:id="@+id/video_one_item"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:visibility="gone"
+                />
+            <ImageView
+                android:id="@+id/img_one_item"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_img_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                >
 
-    <VideoView
-        android:id="@+id/video_one_item"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:visibility="gone"
-        />
-    <ImageView
-        android:id="@+id/img_one_item"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="fitXY"
-        />
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_img_item"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        >
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </FrameLayout>
 
-    </android.support.v7.widget.RecyclerView>
     <Button
         android:id="@+id/btn_oder_now"
         android:layout_width="match_parent"

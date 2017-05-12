@@ -16,7 +16,7 @@
             android:id="@+id/img_avatar_one_review"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/ava1"
+            android:src="@drawable/ava0"
 
             />
 

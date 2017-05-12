@@ -8,8 +8,6 @@ import dav.com.foody.Model.ModelCity;
 import dav.com.foody.Objects.City;
 import dav.com.foody.Views.ChangeCity.IVewCity;
 
-import static dav.com.foody.Views.Home.MainActivity.database;
-
 /**
  * Created by binhb on 27/03/2017.
  */
@@ -28,7 +26,7 @@ public class PresenterLogicCity implements IPresenterCity {
 
     @Override
     public void getListCity() {
-        List<City> cities = modelCity.getListCities(database);
+        List<City> cities = modelCity.getListCities();
 
         if(cities.size() > 0){
             iVewCity.showListCities(cities);

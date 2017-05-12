@@ -38,4 +38,24 @@
         <item name="textAllCaps">false</item>
         <item name="android:textAllCaps">false</item>
     </style>
+
+    <style name="MyTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:textColorPrimary">@color/colorFoody</item>
+        <item name="colorAccent">@color/colorFoody</item>
+        <item name="android:alertDialogStyle">@style/CustomStyle</item>
+    </style>
+
+    <style name="CustomStyle">
+        <item name="android:bottomBright">@color/colorWhite</item>
+        <item name="android:bottomDark">@color/colorWhite</item>
+        <item name="android:bottomMedium">@color/colorWhite</item>
+        <item name="android:centerBright">@color/colorWhite</item>
+        <item name="android:centerDark">@color/colorWhite</item>
+        <item name="android:centerMedium">@color/colorWhite</item>
+        <item name="android:fullBright">@color/colorWhite</item>
+        <item name="android:fullDark">@color/colorWhite</item>
+        <item name="android:topBright">@color/colorWhite</item>
+        <item name="android:topDark">@color/colorWhite</item>
+        <item name="android:windowBackground">@color/colorWhite</item>
+    </style>
 </resources>

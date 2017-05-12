@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/txt_custom_dialog_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chọn thành phố"
+                android:background="@color/colorFoody"
+                android:textSize="18sp"
+                android:padding="10dp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorTextSelect"
+                />
+
+            <ListView
+                android:layout_weight="1"
+                android:id="@+id/lv_custom_dialog_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </ListView>
+
+            <Button
+                android:id="@+id/btn_custom_dialog_skip"
+                android:background="@drawable/back_ground_button_dialog_add_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bỏ qua"
+                />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/frame_custom_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/colorGrayTrans"
+            android:visibility="gone">
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
+    </FrameLayout>
+
+</LinearLayout>

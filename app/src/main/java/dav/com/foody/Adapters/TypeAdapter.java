@@ -1,14 +1,14 @@
 package dav.com.foody.Adapters;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -81,13 +81,9 @@ public class TypeAdapter extends BaseAdapter{
         }
         Type type = types.get(position);
 
-        String uri = "drawable/fd"+type.getImg().replace(".png","");
 
-        Log.d("KT", uri);
-        int imageResource = context.getResources().getIdentifier(uri, null, context.getPackageName());
-        Drawable image = context.getResources().getDrawable(imageResource);
+        Picasso.with(context).load(type.getImg()).fit().centerInside().into(holder.imgType);
 
-        holder.imgType.setImageDrawable(image);
         holder.txtNameType.setText(type.getName());
 
         if(selectdPos == position){

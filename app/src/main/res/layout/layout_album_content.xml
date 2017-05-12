@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TabHost
+        android:id="@+id/tabHost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        >
+        <LinearLayout
+            android:id="@+id/lnContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/lnButtons"
+            android:orientation="vertical"
+            >
+            <TabWidget
+                android:background="@drawable/tab_bg_selector"
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:tabStripEnabled="false"
+                >
+            </TabWidget>
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <LinearLayout
+                    android:id="@+id/ln_content"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_album_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+                    </android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
+
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
+</FrameLayout>

@@ -6,9 +6,7 @@ import java.util.List;
 
 import dav.com.foody.Model.ModelType;
 import dav.com.foody.Objects.Type;
-import dav.com.foody.Views.Home.Fragments.IViewNew;
-
-import static dav.com.foody.Views.Home.MainActivity.database;
+import dav.com.foody.Views.Main.Home.Fragments.IViewNew;
 
 /**
  * Created by binhb on 10/03/2017.
@@ -27,7 +25,7 @@ public class PresenterLogicType implements IPresenterType{
 
     @Override
     public void getListTypes() {
-        List<Type> types =modelType.getListTypes(database);
+        List<Type> types =modelType.getListTypes();
 
         if(types.size()>0){
             iViewNew.showListType(types);

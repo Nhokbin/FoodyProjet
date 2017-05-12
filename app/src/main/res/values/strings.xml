@@ -13,5 +13,15 @@
     <string name="txt_change_country">Change Country</string>
     <string name="it_done">Done</string>
     <string name="btn_change_city">Đổi tỉnh thành</string>
-
+    <string name="email">Email</string>
+    <string name="password">Mật khẩu</string>
+    <string name="re_password">Nhập lại mật khẩu</string>
+    <string name="login">Đăng nhập</string>
+    <string name="or">Hoặc</string>
+    <string name="login_with_facebook">Đăng nhập bằng Facebook</string>
+    <string name="login_with_google">Đăng nhập bằng Google</string>
+    <string name="forgot_password">Quên mật khẩu ?</string>
+    <string name="sign_in"><u>Đăng ký </u></string>
+    <string name="google_client_id">874223935462-c9p5prfnrcuvqkhe5l383aukm4a04e59.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">449155975435423</string>
 </resources>
