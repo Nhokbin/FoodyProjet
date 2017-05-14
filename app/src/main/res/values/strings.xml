@@ -24,4 +24,5 @@
     <string name="sign_in"><u>Đăng ký </u></string>
     <string name="google_client_id">874223935462-c9p5prfnrcuvqkhe5l383aukm4a04e59.apps.googleusercontent.com</string>
     <string name="facebook_app_id">449155975435423</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

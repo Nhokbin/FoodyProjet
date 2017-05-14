@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -21,10 +22,11 @@ import dav.com.foody.CustomView.DialogAddItem;
 import dav.com.foody.Objects.City;
 import dav.com.foody.Objects.District;
 import dav.com.foody.R;
+import dav.com.foody.Views.Map.MapsActivity;
 
 public class AddItemActivity extends AppCompatActivity implements View.OnClickListener{
 
-    TextView txtTimeStart,txtTimeClose,txtNameCountry, txtNameCity, txtNameDistrict;
+    TextView txtTimeStart,txtTimeClose,txtNameCountry, txtNameCity, txtNameDistrict, txtLocation, txtLatLong;
     SimpleDateFormat format= new SimpleDateFormat("HH:mm");
     Time timeValue;
     Calendar calendar;
@@ -47,6 +49,8 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
     static  final String TYPE_CITY = "city";
     static  final String TYPE_DISTRICT = "district";
 
+    public static Double LATITUDE = 0.0;
+    public static Double LONGITUDE = 0.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +64,14 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
         txtNameCountry = (TextView) findViewById(R.id.txt_add_item_name_country);
         txtNameCity = (TextView) findViewById(R.id.txt_add_item_name_city);
         txtNameDistrict = (TextView) findViewById(R.id.txt_add_item_name_district);
-
+        txtLocation = (TextView) findViewById(R.id.txt_add_item_location);
+        txtLatLong = (TextView) findViewById(R.id.txt_add_item_lat_long);
         btnShowAlBum = (ImageButton) findViewById(R.id.btn_add_item_show_album);
         btnShowCamera = (ImageButton) findViewById(R.id.btn_add_item_show_camera);
 
         txtTimeStart.setOnClickListener(this);
         txtTimeClose.setOnClickListener(this);
+        txtLocation.setOnClickListener(this);
         btnShowAlBum.setOnClickListener(this);
         btnShowCamera.setOnClickListener(this);
         txtNameCity.setOnClickListener(this);
@@ -92,6 +98,10 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.txt_add_item_name_district:
                 showDialog(1,"Chọn Quận/ Huyện",TYPE_DISTRICT);
+                break;
+            case R.id.txt_add_item_location:
+                Intent iMap = new Intent(AddItemActivity.this, MapsActivity.class);
+                startActivity(iMap);
                 break;
         }
     }
@@ -160,5 +170,18 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
                 true
         );
         timePickerDialog.show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        if(LATITUDE != 0.0 && LONGITUDE != 0.0){
+            txtLatLong.setText("Lat "+LATITUDE +" - Long " +LONGITUDE);
+        }
     }
 }

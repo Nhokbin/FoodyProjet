@@ -6,7 +6,7 @@ package dav.com.foody.Connect;
 
 public final class SERVER_IP {
 
-    public static final String IP = "192.168.43.134";
+    public static final String IP = "192.168.1.13";
     public static final String PORT = "8080";
     public static final String SERVER ="http://"+ IP +":"+PORT+"/";
 
@@ -24,10 +24,12 @@ public final class SERVER_IP {
     public static final String GET_ALL = "getall";
     public static final String GET_BY_ID = "get-by-id/";
     public static final String GET_BY_CITY = "get-by-city/";
+
     public static final String GET_BY_PARAMS = ITEM + "get-by-params";
     public static final String GET_BY_OPTIONS = ITEM + "get-by-options";
     public static final String GET_BY_CATEGORY = ITEM + "get-by-categories";
     public static final String GET_BY_ADDRESS = ITEM +"get-by-address";
+
     public static final String GET_DISH_BY_OPTIONS = DISH + "get-by-options";
     public static final String GET_DISH_BY_CATEGORY = DISH + "get-by-categories";
 
